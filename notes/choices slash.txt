@@ -1,0 +1,50 @@
+SOMA
+// register 
+const commands = [
+  {
+    name: 'soma',
+    description: 'soma dois numeros',
+    options: [
+      {
+        name: '1ro-número',
+        description: 'O primeiro numero',
+        type: ApplicationCommandOptionType.Number,
+        choices: [
+          {
+            name: 'um',
+            value: 1,
+          },
+          {
+            name: 'dois',
+            value: 2,
+          }
+        ],
+        required: true,
+      },
+      {
+        name: '2do-número',
+        description: 'O segundo numero',
+        type: ApplicationCommandOptionType.Number,
+        required: true,
+      }
+    ]
+  }
+];
+
+// index
+
+
+client.on('interactionCreate', (interaction) => {
+  if (!interaction.isChatInputCommand()) return;
+
+  if (interaction.commandName === 'hey') {
+    return interaction.reply('hey!');
+  }
+
+  if (interaction.commandName === 'soma') {
+    // const num1 = interaction.options.get('1ro-número')?.value // ? serve para quando for opcional nao crashar
+    const num1 = interaction.options.get('1ro-número').value
+    const num2 = interaction.options.get('2do-número').value
+    return interaction.reply(`A soma é ${num1 + num2}`)   
+  } 
+});
