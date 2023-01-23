@@ -16,7 +16,7 @@ module.exports = async (client, interaction) => {
     if (commandObject.devOnly) {
       if (!devs.includes(interaction.member.id)) {
         interaction.reply({
-          content: 'Apenas desenvolvedores podem usar este comando',
+          content: `Apenas desenvolvedores podem usar este comando`,
           ephemeral: true,
         });
         return;
