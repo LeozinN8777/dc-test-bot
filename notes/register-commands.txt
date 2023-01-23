@@ -22,3 +22,17 @@ const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
     console.log(`There was an error: ${error}`);
   }
 })();
+
+//
+module.exports = {
+  name: 'ping',
+  description: 'Pong!',
+  // devOnly: Boolean,
+  testOnly: true,
+  // options: Object[],
+  // deleted: Boolean,
+
+  callback: (client, interaction) => {
+    interaction.reply(`Pong! ${client.ws.ping}ms`);
+  },
+};

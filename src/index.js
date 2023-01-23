@@ -1,5 +1,6 @@
 require('dotenv').config();
-const { Client, IntentsBitField, ActivityType } = require('discord.js');
+const { Client, IntentsBitField, ActivityType  } = require('discord.js');
+const eventHandler = require('./handlers/eventHandler');
 
 const client = new Client({
   intents: [
@@ -10,14 +11,6 @@ const client = new Client({
   ],
 });
 
-client.on('ready', (c) => {
-  console.log(`✅ ${c.user.tag} is online.`);
-
-  client.user.setActivity({
-    name: "Hello world",
-    type: ActivityType.Streaming,
-    url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-  })
-});
+eventHandler(client);
 
 client.login(process.env.TOKEN);
