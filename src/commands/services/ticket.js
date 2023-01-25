@@ -22,11 +22,11 @@ module.exports = {
         let canal = interaction.options.getChannel("canal");
         if (!canal) canal = interaction.channel;
 
-        let embed_ephemeral = new Discord.EmbedBuilder()
+        let embedEphemeral = new Discord.EmbedBuilder()
         .setColor("Grey")
         .setDescription(`Olá ${interaction.user}, o sistema foi adicionado em ${canal} com sucesso.`);
 
-        let emebd_tickets = new Discord.EmbedBuilder()
+        let emebedTickets = new Discord.EmbedBuilder()
         .setColor("Random")
         .setAuthor({ name: interaction.guild.name, iconURL: interaction.guild.iconURL({ dynamic: true}) })
         .setDescription(`> Clique no botão abaixo para abrir um ticket!`);
@@ -38,8 +38,8 @@ module.exports = {
             .setStyle(Discord.ButtonStyle.Primary)
         );
 
-        interaction.reply({ embeds: [embed_ephemeral], ephemeral: true }).then( () => {
-            canal.send({ embeds: [emebd_tickets], components: [botao] })
+        interaction.reply({ embeds: [embedEphemeral], ephemeral: true }).then( () => {
+            canal.send({ embeds: [emebedTickets], components: [botao] })
         })
     }
 

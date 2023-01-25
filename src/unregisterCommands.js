@@ -4,7 +4,7 @@ const { clientId, testServer } = require('../config.json');
 
 const rest = new REST({ version: '10' }).setToken(process.env.TOKEN);
 
-// for guild based commands
+// p/ guild based commands
 function delGuildCommands() {
 rest
   .put(Routes.applicationGuildCommands(clientId, testServer), { body: [] })
@@ -18,7 +18,7 @@ if (testServer === "") {
   delGuildCommands()
 }
 
-// for global commands
+// p/ global commands
 rest
   .put(Routes.applicationCommands(clientId), { body: [] })
   .then(() => console.log('Global commands deletados.'))
