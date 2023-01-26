@@ -7,4 +7,5 @@ module.exports = (client) => {
       url: "https://www.youtube.com/watch?v=dQw4w9WgXcQ"
     })
     console.log(`🤖 ${client.user.tag} esta online✅`);
+    console.log('push/pull complete')
 };
