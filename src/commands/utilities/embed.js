@@ -43,11 +43,10 @@ module.exports = {
   callback: async (client, interaction) => {
     const channel = interaction.options.getChannel("canal");
     const msg = interaction.options.get("json").value;
+    
     const date = new Date().toISOString();
     const author = interaction.user.tag
     const authorIcon = interaction.user.avatarURL({ dynamic: true })
-
-    console.log(authorIcon)
     
     const authorJSON = {
       "name": author,
@@ -69,16 +68,16 @@ module.exports = {
     } 
 
     const json = JSON.parse(msg); 
-    json["timestamp"] = date
-    json["author"] = authorJSON
+    // json["timestamp"] = date
+    // json["author"] = authorJSON
 
-    try {
-      channel.send({embeds: [json] }).then( () => {
+
+      channel.send({embeds: [json] })
+      .then( () => {
         interaction.reply({ content:`✅Mensagem enviada com sucesso em ${channel}`, ephemeral: true})
       })
-     } catch (error) {
-       interaction.reply({ content:`Ocorreu um problema ao enviar a mensagem: ${error}`, ephemeral: true})
-       console.log(`embed ERROR: ${error}`)
-     }
+      .catch((error) => {
+        interaction.reply({ content:`Ocorreu um problema ao enviar a mensagem: ${error}`, ephemeral: true})
+      })
   }
 }

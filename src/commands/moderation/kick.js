@@ -11,6 +11,24 @@ module.exports = {
    * @param {Client} client
    * @param {Interaction} interaction
    */
+  
+  name: 'kick',
+  description: 'Kickar membro do servidor.',
+  options: [
+    {
+      name: 'target-user',
+      description: 'Usuário que deseja kickar.',
+      type: ApplicationCommandOptionType.Mentionable,
+      required: true,
+    },
+    {
+      name: 'reason',
+      description: 'Motivo do kick.',
+      type: ApplicationCommandOptionType.String,
+    },
+  ],
+  permissionsRequired: [PermissionFlagsBits.KickMembers],
+  botPermissions: [PermissionFlagsBits.KickMembers],
 
   callback: async (client, interaction) => {
     const targetUserId = interaction.options.get('target-user').value;
@@ -61,22 +79,4 @@ module.exports = {
       console.log(`Ocorreu um erro ao tentar kickar: ${error}`);
     }
   },
-
-  name: 'kick',
-  description: 'Kickar membro do servidor',
-  options: [
-    {
-      name: 'target-user',
-      description: 'Usuário que deseja kickar',
-      type: ApplicationCommandOptionType.Mentionable,
-      required: true,
-    },
-    {
-      name: 'reason',
-      description: 'Motivo do kick',
-      type: ApplicationCommandOptionType.String,
-    },
-  ],
-  permissionsRequired: [PermissionFlagsBits.KickMembers],
-  botPermissions: [PermissionFlagsBits.KickMembers],
 };
