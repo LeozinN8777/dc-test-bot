@@ -1,11 +1,11 @@
 const mongoose = require('mongoose');
 
-const VideoSchema = new mongoose.Schema({
-    url: String,
+const StringSchema = new mongoose.Schema({
+    stg: String,
     createdAt: {
         type: Date,
         default: () => Date.now(),
     },
 });
 
-module.exports = mongoose.model('Video', VideoSchema);
+module.exports = mongoose.model('String', StringSchema);

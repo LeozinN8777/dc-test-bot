@@ -11,17 +11,17 @@ class Database {
     mongoose.set('strictQuery', true); // idk 
     const mongoUrl =
       `mongodb+srv://dc-test-bot:${process.env.DB_PASS}@cluster0.se6hzd4.mongodb.net/?retryWrites=true&w=majority`;
-      console.log('Iniciando conexão com banco de dados.')
+      console.log('💾🔱 Iniciando conexão com banco de dados.')
       mongoose.connect(mongoUrl, {
         useNewUrlParser: true,
         useUnifiedTopology: true,
       })
       .then(() => {
         this.connect = mongoose.connection;
-        console.log('Conectado com banco de dados.')
+        console.log('💾✅ Conectado com banco de dados.')
       })
       .catch(error => {
-        console.log(`Erro ao conectar com banco de dados: ${error}`)
+        console.error(`💾❌ Erro ao conectar com banco de dados: ${error}`)
       })
   }
 }

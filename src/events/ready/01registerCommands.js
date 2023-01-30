@@ -47,10 +47,10 @@ module.exports = async (client) => {
           options,
         });
 
-        console.log(`✅ Comando registrado "${name}."`);
+        console.log(`💬✅ Comando registrado "${name}."`);
       }
     }
   } catch (error) {
-    console.log(`❌Erro detectado: ${error}`);
+    console.error(`❌Erro detectado: ${error}`);
   }
 };

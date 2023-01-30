@@ -1,4 +1,4 @@
-const Video = require("../../models/video");
+const String = require("../../database/models/strings");
 const {
   ApplicationCommandOptionType,
   PermissionFlagsBits,
@@ -10,25 +10,25 @@ module.exports = {
    * @param {Client} client
    * @param {Interaction} interaction
    */
-  name: "video",
-  description: "Armazena video no DB",
+  name: "addstring",
+  description: "Armazena string no DB",
   devOnly: false,
   options: [
     {
-      name: "link",
-      description: "Link do video que deseja armazenar",
+      name: "string",
+      description: "String que deseja armazenar",
       type: ApplicationCommandOptionType.String,
       required: true,
     },
   ],
 
   callback: async (client, interaction) => {
-    const videoLink = interaction.options.getString("link");
+    const string = interaction.options.getString("string");
 
-    await Video.create({
-      url: videoLink,
+    await String.create({
+      stg: string,
     });
 
-    await interaction.reply(`Video registrado com sucesso!\n (${videoLink})`);
+    await interaction.reply(`Registrado com sucesso!\n (${string})`);
   },
 };

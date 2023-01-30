@@ -1,7 +1,7 @@
 require('dotenv').config();
 const { Client, IntentsBitField } = require('discord.js');
 const eventHandler = require('./handlers/eventHandler');
-const Database = require('./config/database')
+const Database = require('./database/database')
 const db = new Database;
 
 db.connect()

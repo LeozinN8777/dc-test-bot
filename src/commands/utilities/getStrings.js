@@ -1,5 +1,5 @@
 const discord = require('discord.js');
-const Video = require('../../models/video');
+const String = require('../../database/models/strings');
 
 module.exports = {
     /**
@@ -7,20 +7,20 @@ module.exports = {
    * @param {Client} client
    * @param {Interaction} interaction
    */
-  name: "getvideos",
-  description: "Armazena video no DB",
+  name: "getstrings",
+  description: "Lista as strings do DB",
   devOnly: false,
 
     callback: async (client, interaction) => {
         try {
-            const videos = await Video.find();
+            const strings = await String.find();
             let list = ""
-            for (let i = 0; i < videos.length; i++) {
-                list = list + "\n-> " + videos[i].url;
+            for (let i = 0; i < strings.length; i++) {
+                list = list + "\n-> " + strings[i].stg;
             }
 
             if (!list) {
-                interaction.reply({ content: ' Não há vídeos registrados na database.' });
+                interaction.reply({ content: ' Não há Strings registradas na database.' });
                 return
             }  
 
