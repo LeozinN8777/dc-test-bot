@@ -1,4 +1,4 @@
-const String = require("../../database/models/strings");
+const String = require("../../database/strings");
 const {
   ApplicationCommandOptionType,
   PermissionFlagsBits,

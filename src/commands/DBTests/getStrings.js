@@ -1,5 +1,5 @@
 const discord = require('discord.js');
-const String = require('../../database/models/strings');
+const String = require('../../database/strings');
 
 module.exports = {
     /**

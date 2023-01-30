@@ -1,10 +1,8 @@
+console.log(`🤖 Iniciando BOT...`)
 require('dotenv').config();
 const { Client, IntentsBitField } = require('discord.js');
 const eventHandler = require('./handlers/eventHandler');
-const Database = require('./database/database')
-const db = new Database;
-
-db.connect()
+const mongoose = require('mongoose')
 
 const client = new Client({
   intents: [
@@ -15,6 +13,17 @@ const client = new Client({
   ],
 });
 
-eventHandler(client);
+(async () => {
+  try {
+    console.log('💾🔱 Iniciando conexão com banco de dados.')
+    mongoose.set('strictQuery', false);
+    await mongoose.connect(process.env.MONGODB_URL, { keepAlive: true })
+    console.log('💾✅ Conectado com banco de dados.')
+
+    eventHandler(client);
+  } catch (error) {
+    console.log(`💾❌ Erro ao conectar com banco de dados: ${error}`)
+  }
+})()
 
 client.login(process.env.TOKEN);
