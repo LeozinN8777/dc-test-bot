@@ -3,3 +3,13 @@ interaction.user.avatarURL() = avatar de qm mandou
  const targetUserRolePosition = targetUser.roles.highest.position; // Highest role of the target user
     const requestUserRolePosition = interaction.member.roles.highest.position; // Highest role of the user running the cmd
     const botRolePosition = interaction.guild.members.me.roles.highest.position; // Highest role of the bot
+    
+    let dono = "359467850748133377"; 
+    let membros = client.users.cache.size;
+    let servidores = client.guilds.cache.size;
+    let canais = client.channels.cache.size;
+    let bot = client.user.tag;
+    let avatar_bot = client.user.displayAvatarURL({ dynamic: true });
+    let linguagem = "JavaScript";
+    let livraria = "Discord.Js";
+    let ping = client.ws.ping;

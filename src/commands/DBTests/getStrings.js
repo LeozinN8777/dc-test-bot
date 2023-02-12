@@ -16,9 +16,9 @@ module.exports = {
             const strings = await String.find();
             let list = ""
             for (let i = 0; i < strings.length; i++) {
-                list = list + "\n-> " + strings[i].stg;
+                list = list + "\n-> " + strings[i].createdAt;
             }
-
+            
             if (!list) {
                 interaction.reply({ content: ' Não há Strings registradas na database.' });
                 return
