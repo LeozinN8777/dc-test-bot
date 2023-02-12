@@ -43,13 +43,8 @@ module.exports = {
     const vipRole = interaction.options.getRole("viprole");
     const user = interaction.options.getUser("user");
     const member = interaction.options.getMember("user");
-    let time = interaction.options?.getString("time") || "30d";
-    if (time == "7d") {
-      time = 604800000;
-    }
-    if (time == "30d") {
-      time = 2592000000;
-    }
+    let time = interaction.options?.getString("time") || 2592000000;
+    let timeNumber = parseInt(time)
 
     const logChannel = interaction.guild.channels.cache.find(
         (c) => c.name === "dc-bot"
@@ -59,18 +54,19 @@ module.exports = {
 
     try {
         const inicio = new Date()
-        const fim = new Date(inicio.getTime() + time);
+        const fim = new Date(inicio.getTime() + timeNumber);
         
         await vipsDB.create({
             userTAG: user.tag,
             userID: user.id,
             VIP: vipRole.name,
+            VIPRoleID: vipRole.id,
             Inicio: inicio,
             Fim: fim,
         });
 
 
-        member.roles.add(vipRole.id).then(() => { interaction.reply({content: `✅ ${vipRole} Adicionado com sucesso para: ${user} por ${time / 1000 / 60 / 60 / 24} dias`, ephemeral: true }); })
+        member.roles.add(vipRole.id).then(() => { interaction.reply({content: `✅ ${vipRole} Adicionado com sucesso para: ${user} por ${timeNumber / 1000 / 60 / 60 / 24} dias`, ephemeral: true }); })
 
     } catch (error) {
         interaction.reply({content: `❌ Não foi possível adicionar ${vipRole} para: ${user} \n ❌Erro: ${error}`, ephemeral: true});

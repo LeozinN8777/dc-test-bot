@@ -4,6 +4,7 @@ const vipsDBSchema = new mongoose.Schema({
     userTAG: String,
     userID: String,
     VIP: String,
+    VIPRoleID: String,
     Inicio: {
         type: Date,
         default: () => Date.now(),
