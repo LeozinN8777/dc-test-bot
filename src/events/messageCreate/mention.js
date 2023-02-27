@@ -1,5 +1,11 @@
 module.exports = (client, message) => {
-    if(message.mentions.users.has(client.user.id)) {
-        message.reply('Olá! uso slash commands\nPara usar meus comandos use ``/``');
-    }
+    if (message.author.bot) return;
+
+    let mention = [`<@${client.user.id}>`, `<!@${client.user.id}>`]
+
+    mention.forEach(element => {
+        if (message.content === element) {
+            message.reply('Olá! uso slash commands\nPara usar meus comandos use ``/``');
+        }
+    })
 }
