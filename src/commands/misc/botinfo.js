@@ -7,7 +7,7 @@ module.exports = {
 
   callback: async (client, interaction) => {
 
-    let dono = "359467850748133377"; 
+    let dono = "359467850748133377";
     let membros = client.users.cache.size;
     let servidores = client.guilds.cache.size;
     let canais = client.channels.cache.size;
@@ -18,14 +18,14 @@ module.exports = {
     let ping = client.ws.ping;
 
     let embed = new Discord.EmbedBuilder()
-    .setColor("Random")
-    .setAuthor({ name: bot, iconURL: avatar_bot })
-    .setFooter({ text: bot, iconURL: avatar_bot })
-    .setTimestamp(new Date())
-    .setThumbnail(avatar_bot)
-    .setDescription(`Olá ${interaction.user}, veja minhas informações abaixo:\n\n> 🤖 Nome: \`${bot}\`.\n> 🤖 Dono: ${client.users.cache.get(dono)}.
+      .setColor("Random")
+      .setAuthor({ name: bot, iconURL: avatar_bot })
+      .setFooter({ text: bot, iconURL: avatar_bot })
+      .setTimestamp(new Date())
+      .setThumbnail(avatar_bot)
+      .setDescription(`Olá ${interaction.user}, veja minhas informações abaixo:\n\n> 🤖 Nome: \`${bot}\`.\n> 🤖 Dono: ${client.users.cache.get(dono)}.
 \n> ⚙ Membros: \`${membros}\`.\n> ⚙ Servidores: \`${servidores}\`.\n> ⚙ Canais: \`${canais}\`.\n> ⚙ Ping: \`${ping}\`.
-\n> 📚 Linguagem: \`${linguagem}\`.\n> 📚 Lib: \`${livraria}\`.`);
+\n> 📚 Linguagem: \`${linguagem}\`.\n> 📚 Lib: \`${livraria}\ \n> /developers/active-developer.`);
 
     interaction.reply({ embeds: [embed] })
 
